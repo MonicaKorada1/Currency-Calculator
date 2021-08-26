@@ -8,14 +8,15 @@ const swap = document.getElementById("swap");
 
 
 function calculate(){
-  
-  fetch(`https://api.exchangeratesapi.io/latest?base=${currencyEl_one.value}`)
+   
+  fetch(`https://open.exchangerate-api.com/v6/latest/${currencyEl_one.value}`)
     .then(res => res.json())
     .then(data => {
+      //console.log(data);
       const rate = data.rates[currencyEl_two.value];
       rateEl.innerText = `1 ${currencyEl_one.value} = ${rate} ${currencyEl_two.value}`;
 
-      amountEl_two.value = (amountEl_one.value * rate).toFixed(3);
+      amountEl_two.value = (amountEl_one.value * rate).toFixed(3); 
     });
 }
 
